@@ -7,16 +7,123 @@
 //
 
 #import "AppDelegate.h"
+#import "ViewController.h"
+#import "SideMenuViewController.h"
+#import "MFSideMenuContainerViewController.h"
+
+
+#import "MMDrawerController.h"
+#import "MMCenterTableViewController.h"
+#import "MMLeftSideDrawerViewController.h"
+#import "MMRightSideDrawerViewController.h"
+#import "MMDrawerVisualState.h"
+#import "MMExampleDrawerVisualStateManager.h"
+#import "MMNavigationController.h"
+
+#import <QuartzCore/QuartzCore.h>
+
+#define MMDRAWER
+//#define SIDEMENU
+
+
 
 @interface AppDelegate ()
-
+@property (nonatomic,strong) MMDrawerController * drawerController;
 @end
 
 @implementation AppDelegate
 
+- (ViewController *)getController {
+    //return [[DemoViewController alloc] initWithNibName:@"DemoViewController" bundle:nil];
+    return [[ViewController alloc] init];
+}
+
+- (UINavigationController *)navigationController {
+    return [[UINavigationController alloc]
+            initWithRootViewController:[self getController]];
+}
+
+
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+#ifdef SIDEMENU
+    //sideMenuで実行する場合
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    
+    SideMenuViewController *leftMenuViewController = [[SideMenuViewController alloc] init];
+    SideMenuViewController *rightMenuViewController = [[SideMenuViewController alloc] init];
+    MFSideMenuContainerViewController *container = [MFSideMenuContainerViewController
+                                                    containerWithCenterViewController:[self navigationController]
+                                                    leftMenuViewController:leftMenuViewController
+                                                    rightMenuViewController:rightMenuViewController];
+    self.window.rootViewController = container;
+    [self.window makeKeyAndVisible];
+#endif
+    
+#ifdef MMDRAWER
+    //mmDrawerControllerで実行する場合
+    UIViewController * leftSideDrawerViewController =
+    [[MMLeftSideDrawerViewController alloc] init];
+    
+    UIViewController * centerViewController =
+    [[MMCenterTableViewController alloc] init];
+    
+    UIViewController * rightSideDrawerViewController =
+    [[MMRightSideDrawerViewController alloc] init];
+    
+    UINavigationController * navigationController =
+    [[MMNavigationController alloc]
+     initWithRootViewController:centerViewController];
+    [navigationController
+     setRestorationIdentifier:@"MMExampleCenterNavigationControllerRestorationKey"];
+    if(OSVersionIsAtLeastiOS7()){
+        UINavigationController * rightSideNavController =
+        [[MMNavigationController alloc] initWithRootViewController:rightSideDrawerViewController];
+        [rightSideNavController
+         setRestorationIdentifier:@"MMExampleRightNavigationControllerRestorationKey"];
+        UINavigationController * leftSideNavController = [[MMNavigationController alloc] initWithRootViewController:leftSideDrawerViewController];
+        [leftSideNavController
+         setRestorationIdentifier:@"MMExampleLeftNavigationControllerRestorationKey"];
+        self.drawerController = [[MMDrawerController alloc]
+                                 initWithCenterViewController:navigationController
+                                 leftDrawerViewController:leftSideNavController
+                                 rightDrawerViewController:rightSideNavController];
+        [self.drawerController setShowsShadow:NO];
+    }
+    else{
+        self.drawerController = [[MMDrawerController alloc]
+                                 initWithCenterViewController:navigationController
+                                 leftDrawerViewController:leftSideDrawerViewController
+                                 rightDrawerViewController:rightSideDrawerViewController];
+    }
+    [self.drawerController setRestorationIdentifier:@"MMDrawer"];
+    [self.drawerController setMaximumRightDrawerWidth:200.0];
+    [self.drawerController setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeAll];
+    [self.drawerController setCloseDrawerGestureModeMask:MMCloseDrawerGestureModeAll];
+    
+    [self.drawerController
+     setDrawerVisualStateBlock:^(MMDrawerController *drawerController, MMDrawerSide drawerSide, CGFloat percentVisible) {
+         MMDrawerControllerDrawerVisualStateBlock block;
+         block = [[MMExampleDrawerVisualStateManager sharedManager]
+                  drawerVisualStateBlockForDrawerSide:drawerSide];
+         if(block){
+             block(drawerController, drawerSide, percentVisible);
+         }
+     }];
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    if(OSVersionIsAtLeastiOS7()){
+        UIColor * tintColor = [UIColor colorWithRed:29.0/255.0
+                                              green:173.0/255.0
+                                               blue:234.0/255.0
+                                              alpha:1.0];
+        [self.window setTintColor:tintColor];
+    }
+    [self.window setRootViewController:self.drawerController];
+#endif
+    
+    
     return YES;
 }
 

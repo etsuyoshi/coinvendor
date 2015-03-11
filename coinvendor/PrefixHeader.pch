@@ -1,0 +1,31 @@
+//
+//  PrefixHeader.pch
+//  coinvendor
+//
+//  Created by EndoTsuyoshi on 2015/03/11.
+//  Copyright (c) 2015年 com.endo. All rights reserved.
+//
+
+//#ifndef coinvendor_PrefixHeader_pch
+//#define coinvendor_PrefixHeader_pch
+//
+//// Include any system framework and library headers here that should be included in all compilation units.
+//// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+//
+//#endif
+
+
+#import <Availability.h>
+#ifndef __IPHONE_3_0
+#warning "This project uses features only available in iOS SDK 3.0 and later."
+#endif
+
+#ifdef __OBJC__
+#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+#endif
+
+
+static BOOL OSVersionIsAtLeastiOS7() {
+    return (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_6_1);
+}
