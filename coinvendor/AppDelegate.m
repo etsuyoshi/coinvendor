@@ -13,7 +13,7 @@
 
 
 #import "MMDrawerController.h"
-#import "MMCenterTableViewController.h"
+#import "MMCenterViewController.h"
 #import "MMLeftSideDrawerViewController.h"
 #import "MMRightSideDrawerViewController.h"
 #import "MMDrawerVisualState.h"
@@ -68,7 +68,7 @@
     [[MMLeftSideDrawerViewController alloc] init];
     
     UIViewController * centerViewController =
-    [[MMCenterTableViewController alloc] init];
+    [[MMCenterViewController alloc] init];
     
     UIViewController * rightSideDrawerViewController =
     [[MMRightSideDrawerViewController alloc] init];

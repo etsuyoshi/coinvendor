@@ -22,9 +22,19 @@
 #import <UIKit/UIKit.h>
 #import "MMSuperViewController.h"
 
-@interface MMCenterTableViewController : MMSuperViewController
+
+typedef NS_ENUM(NSInteger, ControllerStyle) {
+    ControllerStyleDaily,
+    ControllerStyleMinute,
+    ControllerStyleConfig
+};
+
+
+@interface MMCenterViewController : MMSuperViewController
 //<UITableViewDataSource,UITableViewDelegate>
 <UIWebViewDelegate>
 //@property (nonatomic,strong) UITableView * tableView;
 @property (nonatomic, strong) UIWebView *myWebView;
+@property (nonatomic) ControllerStyle controllerStyle;
+
 @end

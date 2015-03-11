@@ -20,7 +20,7 @@
 
 
 #import "MMSideDrawerViewController.h"
-#import "MMCenterTableViewController.h"
+#import "MMCenterViewController.h"
 #import "MMSideDrawerTableViewCell.h"
 #import "MMSideDrawerSectionHeaderView.h"
 #import "MMLogoView.h"
@@ -158,10 +158,10 @@
     switch (indexPath.section) {
         case MMDrawerSectionViewSelection:
             if(indexPath.row == 0){
-                [cell.textLabel setText:@"Quick View Change"];
+                [cell.textLabel setText:@"日足チャート"];
             }
             else {
-                [cell.textLabel setText:@"Full View Change"];
+                [cell.textLabel setText:@"分足チャート"];
             }
             [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
             break;
@@ -302,7 +302,7 @@
 -(NSString*)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
     switch (section) {
         case MMDrawerSectionViewSelection:
-            return @"New Center View";
+            return @"チャート種別";
         case MMDrawerSectionDrawerWidth:
             return @"Drawer Width";
         case MMDrawerSectionShadowToggle:
@@ -356,10 +356,17 @@
 {
     switch (indexPath.section) {
         case MMDrawerSectionViewSelection:{
-            MMCenterTableViewController * center = [[MMCenterTableViewController alloc] init];
+            MMCenterViewController * center = [[MMCenterViewController alloc] init];
+            if(indexPath.row == ControllerStyleDaily){
+                center.controllerStyle = ControllerStyleDaily;
+            }else if(indexPath.row == ControllerStyleMinute){
+                center.controllerStyle = ControllerStyleMinute;
+            }
             
             UINavigationController * nav = [[MMNavigationController alloc] initWithRootViewController:center];
             
+            
+            //遷移アニメーションの種類
             if(indexPath.row%2==0){
                 [self.mm_drawerController
                  setCenterViewController:nav

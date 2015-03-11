@@ -20,6 +20,10 @@
 
 #import <UIKit/UIKit.h>
 
+//webview-style(daily, minute)
+
+
+
 @interface MMSuperViewController : UIViewController
 
 -(void)contentSizeDidChange:(NSString*)size;

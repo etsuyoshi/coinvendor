@@ -56,7 +56,7 @@
 
 -(void)viewDidLoad{
     [super viewDidLoad];
-    [self setTitle:@"Right Drawer"];
+    [self setTitle:@"面倒だから左メニューと同じにした"];
 }
 
 -(NSString*)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{

@@ -12,7 +12,7 @@
 		2A5A48271AB016A0006554A5 /* MMSideDrawerSectionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A5A48201AB016A0006554A5 /* MMSideDrawerSectionHeaderView.m */; };
 		2A5A48281AB016A0006554A5 /* MMSideDrawerTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A5A48221AB016A0006554A5 /* MMSideDrawerTableViewCell.m */; };
 		2A5A48291AB016A0006554A5 /* MMTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A5A48241AB016A0006554A5 /* MMTableViewCell.m */; };
-		2A5A48371AB01729006554A5 /* MMCenterTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A5A482C1AB01729006554A5 /* MMCenterTableViewController.m */; };
+		2A5A48371AB01729006554A5 /* MMCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A5A482C1AB01729006554A5 /* MMCenterViewController.m */; };
 		2A5A48381AB01729006554A5 /* MMLeftSideDrawerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A5A482E1AB01729006554A5 /* MMLeftSideDrawerViewController.m */; };
 		2A5A48391AB01729006554A5 /* MMRightSideDrawerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A5A48301AB01729006554A5 /* MMRightSideDrawerViewController.m */; };
 		2A5A483A1AB01729006554A5 /* MMSideDrawerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A5A48321AB01729006554A5 /* MMSideDrawerViewController.m */; };
@@ -25,7 +25,6 @@
 		2A938E211AAEF3C700810D9D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2A938E1F1AAEF3C700810D9D /* Main.storyboard */; };
 		2A938E231AAEF3C700810D9D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2A938E221AAEF3C700810D9D /* Images.xcassets */; };
 		2A938E261AAEF3C700810D9D /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A938E241AAEF3C700810D9D /* LaunchScreen.xib */; };
-		2A938E321AAEF3C700810D9D /* coinvendorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A938E311AAEF3C700810D9D /* coinvendorTests.m */; };
 		2A938E411AAEF61200810D9D /* SideMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A938E401AAEF61200810D9D /* SideMenuViewController.m */; };
 		2A938E4C1AAEF86300810D9D /* burger.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A938E421AAEF86300810D9D /* burger.png */; };
 		2A938E4D1AAEF86300810D9D /* burger@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A938E431AAEF86300810D9D /* burger@2x.png */; };
@@ -40,16 +39,6 @@
 		99263A85E9FDB324DBD8EA04 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A75D0EEAA070E84E421E489 /* libPods.a */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		2A938E2C1AAEF3C700810D9D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 2A938E0A1AAEF3C700810D9D /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 2A938E111AAEF3C700810D9D;
-			remoteInfo = coinvendor;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
 		2A5A481B1AB016A0006554A5 /* MMCenterTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMCenterTableViewCell.h; sourceTree = "<group>"; };
 		2A5A481C1AB016A0006554A5 /* MMCenterTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMCenterTableViewCell.m; sourceTree = "<group>"; };
@@ -62,8 +51,8 @@
 		2A5A48231AB016A0006554A5 /* MMTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMTableViewCell.h; sourceTree = "<group>"; };
 		2A5A48241AB016A0006554A5 /* MMTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMTableViewCell.m; sourceTree = "<group>"; };
 		2A5A482A1AB016ED006554A5 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
-		2A5A482B1AB01729006554A5 /* MMCenterTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMCenterTableViewController.h; sourceTree = "<group>"; };
-		2A5A482C1AB01729006554A5 /* MMCenterTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMCenterTableViewController.m; sourceTree = "<group>"; };
+		2A5A482B1AB01729006554A5 /* MMCenterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMCenterViewController.h; sourceTree = "<group>"; };
+		2A5A482C1AB01729006554A5 /* MMCenterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMCenterViewController.m; sourceTree = "<group>"; };
 		2A5A482D1AB01729006554A5 /* MMLeftSideDrawerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMLeftSideDrawerViewController.h; sourceTree = "<group>"; };
 		2A5A482E1AB01729006554A5 /* MMLeftSideDrawerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMLeftSideDrawerViewController.m; sourceTree = "<group>"; };
 		2A5A482F1AB01729006554A5 /* MMRightSideDrawerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMRightSideDrawerViewController.h; sourceTree = "<group>"; };
@@ -86,7 +75,6 @@
 		2A938E201AAEF3C700810D9D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2A938E221AAEF3C700810D9D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		2A938E251AAEF3C700810D9D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		2A938E2B1AAEF3C700810D9D /* coinvendorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = coinvendorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2A938E301AAEF3C700810D9D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2A938E311AAEF3C700810D9D /* coinvendorTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = coinvendorTests.m; sourceTree = "<group>"; };
 		2A938E3F1AAEF61200810D9D /* SideMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SideMenuViewController.h; sourceTree = "<group>"; };
@@ -115,21 +103,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		2A938E281AAEF3C700810D9D /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		2A5A480A1AB0153F006554A5 /* MMDrawerController */ = {
 			isa = PBXGroup;
 			children = (
-				2A5A482B1AB01729006554A5 /* MMCenterTableViewController.h */,
-				2A5A482C1AB01729006554A5 /* MMCenterTableViewController.m */,
+				2A5A482B1AB01729006554A5 /* MMCenterViewController.h */,
+				2A5A482C1AB01729006554A5 /* MMCenterViewController.m */,
 				2A5A482D1AB01729006554A5 /* MMLeftSideDrawerViewController.h */,
 				2A5A482E1AB01729006554A5 /* MMLeftSideDrawerViewController.m */,
 				2A5A482F1AB01729006554A5 /* MMRightSideDrawerViewController.h */,
@@ -185,7 +166,6 @@
 			isa = PBXGroup;
 			children = (
 				2A938E121AAEF3C700810D9D /* coinvendor.app */,
-				2A938E2B1AAEF3C700810D9D /* coinvendorTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -318,24 +298,6 @@
 			productReference = 2A938E121AAEF3C700810D9D /* coinvendor.app */;
 			productType = "com.apple.product-type.application";
 		};
-		2A938E2A1AAEF3C700810D9D /* coinvendorTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 2A938E381AAEF3C700810D9D /* Build configuration list for PBXNativeTarget "coinvendorTests" */;
-			buildPhases = (
-				2A938E271AAEF3C700810D9D /* Sources */,
-				2A938E281AAEF3C700810D9D /* Frameworks */,
-				2A938E291AAEF3C700810D9D /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				2A938E2D1AAEF3C700810D9D /* PBXTargetDependency */,
-			);
-			name = coinvendorTests;
-			productName = coinvendorTests;
-			productReference = 2A938E2B1AAEF3C700810D9D /* coinvendorTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -347,10 +309,6 @@
 				TargetAttributes = {
 					2A938E111AAEF3C700810D9D = {
 						CreatedOnToolsVersion = 6.2;
-					};
-					2A938E2A1AAEF3C700810D9D = {
-						CreatedOnToolsVersion = 6.2;
-						TestTargetID = 2A938E111AAEF3C700810D9D;
 					};
 				};
 			};
@@ -368,7 +326,6 @@
 			projectRoot = "";
 			targets = (
 				2A938E111AAEF3C700810D9D /* coinvendor */,
-				2A938E2A1AAEF3C700810D9D /* coinvendorTests */,
 			);
 		};
 /* End PBXProject section */
@@ -391,13 +348,6 @@
 				2A938E511AAEF86300810D9D /* globe@2x.png in Resources */,
 				2A938E261AAEF3C700810D9D /* LaunchScreen.xib in Resources */,
 				2A938E231AAEF3C700810D9D /* Images.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		2A938E291AAEF3C700810D9D /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -445,7 +395,7 @@
 				2A5A48401AB017F1006554A5 /* MMExampleDrawerVisualStateManager.m in Sources */,
 				2A938E411AAEF61200810D9D /* SideMenuViewController.m in Sources */,
 				2A938E1E1AAEF3C700810D9D /* ViewController.m in Sources */,
-				2A5A48371AB01729006554A5 /* MMCenterTableViewController.m in Sources */,
+				2A5A48371AB01729006554A5 /* MMCenterViewController.m in Sources */,
 				2A5A48391AB01729006554A5 /* MMRightSideDrawerViewController.m in Sources */,
 				2A5A48261AB016A0006554A5 /* MMLogoView.m in Sources */,
 				2A5A483C1AB01729006554A5 /* MMNavigationController.m in Sources */,
@@ -460,23 +410,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		2A938E271AAEF3C700810D9D /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				2A938E321AAEF3C700810D9D /* coinvendorTests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		2A938E2D1AAEF3C700810D9D /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 2A938E111AAEF3C700810D9D /* coinvendor */;
-			targetProxy = 2A938E2C1AAEF3C700810D9D /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		2A938E1F1AAEF3C700810D9D /* Main.storyboard */ = {
@@ -515,7 +449,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Tsuyoshi Endo (9F7RPH86TF)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Tsuyoshi Endo (9F7RPH86TF)";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -535,6 +470,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "d4fa5dd7-9436-45cb-8e15-0bcc2eb35776";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -556,7 +492,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Tsuyoshi Endo (Y7QGWHWRZ7)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Tsuyoshi Endo (Y7QGWHWRZ7)";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -569,6 +506,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				PROVISIONING_PROFILE = "2ce3bddb-093e-4a7f-ba8d-ca33ff7b0ce9";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -583,6 +521,7 @@
 				INFOPLIST_FILE = coinvendor/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "d4fa5dd7-9436-45cb-8e15-0bcc2eb35776";
 			};
 			name = Debug;
 		};
@@ -595,40 +534,7 @@
 				INFOPLIST_FILE = coinvendor/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Release;
-		};
-		2A938E391AAEF3C700810D9D /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = coinvendorTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/coinvendor.app/coinvendor";
-			};
-			name = Debug;
-		};
-		2A938E3A1AAEF3C700810D9D /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = coinvendorTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/coinvendor.app/coinvendor";
+				PROVISIONING_PROFILE = "2ce3bddb-093e-4a7f-ba8d-ca33ff7b0ce9";
 			};
 			name = Release;
 		};
@@ -649,15 +555,6 @@
 			buildConfigurations = (
 				2A938E361AAEF3C700810D9D /* Debug */,
 				2A938E371AAEF3C700810D9D /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		2A938E381AAEF3C700810D9D /* Build configuration list for PBXNativeTarget "coinvendorTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				2A938E391AAEF3C700810D9D /* Debug */,
-				2A938E3A1AAEF3C700810D9D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

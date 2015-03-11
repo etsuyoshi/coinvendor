@@ -19,7 +19,7 @@
 // THE SOFTWARE.
 
 
-#import "MMCenterTableViewController.h"
+#import "MMCenterViewController.h"
 #import "MMExampleDrawerVisualStateManager.h"
 #import "UIViewController+MMDrawerController.h"
 #import "MMDrawerBarButtonItem.h"
@@ -40,11 +40,14 @@ typedef NS_ENUM(NSInteger, MMCenterViewControllerSection){
 
 
 
-@interface MMCenterTableViewController ()
+
+
+
+@interface MMCenterViewController ()
 
 @end
 
-@implementation MMCenterTableViewController{
+@implementation MMCenterViewController{
     NSString *strUrl;
 }
 
@@ -70,7 +73,7 @@ typedef NS_ENUM(NSInteger, MMCenterViewControllerSection){
     self.myWebView.delegate = self;
     self.myWebView.backgroundColor = [UIColor blackColor];
     [self.view addSubview:self.myWebView];
-    strUrl = @"http://kumaco.in/sp/bitstamp_chart/daily";
+    [self setUrl];
     [self connectionStart];
     
 //    UITapGestureRecognizer * doubleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(doubleTap:)];
@@ -150,9 +153,16 @@ typedef NS_ENUM(NSInteger, MMCenterViewControllerSection){
 -(void)contentSizeDidChange:(NSString *)size{
     //[self.tableView reloadData];
     NSLog(@"%s", __func__);
-    strUrl = @"http://kumaco.in/sp/bitstamp_chart/min";
-    strUrl = @"http://kumaco.in/sp/bitstamp_chart/daily";
+    [self setUrl];
     [self connectionStart];
+}
+
+-(void)setUrl{
+    if(self.controllerStyle == ControllerStyleMinute){
+        strUrl = @"http://kumaco.in/sp/bitstamp_chart/min";
+    }else if(self.controllerStyle == ControllerStyleDaily){
+        strUrl = @"http://kumaco.in/sp/bitstamp_chart/daily";
+    }
 }
 
 #pragma mark - Table view data source
