@@ -86,7 +86,7 @@
     navBarTitleDict = @{NSForegroundColorAttributeName:titleColor};
     [self.navigationController.navigationBar setTitleTextAttributes:navBarTitleDict];
     
-    self.drawerWidths = @[@(160),@(200),@(240),@(280),@(320)];
+    self.drawerWidths = @[@(10),@(20),@(50),@(100),@(200)];
     
     CGSize logoSize = CGSizeMake(58, 62);
     MMLogoView * logo = [[MMLogoView alloc] initWithFrame:CGRectMake(CGRectGetMidX(self.tableView.bounds)-logoSize.width/2.0,
@@ -170,7 +170,7 @@
             break;
         }
         case MMDrawerSectionShadowToggle:{
-            [cell.textLabel setText:@"Show Shadow"];
+            [cell.textLabel setText:@"設定画面へ"];
             if(self.mm_drawerController.showsShadow)
                 [cell setAccessoryType:UITableViewCellAccessoryCheckmark];
             else
@@ -304,9 +304,9 @@
         case MMDrawerSectionViewSelection:
             return @"チャート種別";
         case MMDrawerSectionDrawerWidth:
-            return @"Drawer Width";
+            return @"乖離率設定";
         case MMDrawerSectionShadowToggle:
-            return @"Shadow";
+            return @"警戒値設定";
         case MMDrawerSectionOpenDrawerGestures:
             return @"Drawer Open Gestures";
         case MMDrawerSectionCloseDrawerGestures:
@@ -356,6 +356,7 @@
 {
     switch (indexPath.section) {
         case MMDrawerSectionViewSelection:{
+            NSLog(@"selected MMDrawerSectionViewSelection");
             MMCenterViewController * center = [[MMCenterViewController alloc] init];
             if(indexPath.row == ControllerStyleDaily){
                 center.controllerStyle = ControllerStyleDaily;
@@ -383,15 +384,31 @@
         }
             
         case MMDrawerSectionDrawerWidth:{
+            NSLog(@"selected MMDrawerSectionDrawerWidth");
             //Implement in Subclass
             break;
         }
         case MMDrawerSectionShadowToggle:{
-            [self.mm_drawerController setShowsShadow:!self.mm_drawerController.showsShadow];
-            [tableView reloadSections:[NSIndexSet indexSetWithIndex:indexPath.section] withRowAnimation:UITableViewRowAnimationNone];
+            NSLog(@"selected MMDrawerSectionShadowToggle");
+//            [self.mm_drawerController setShowsShadow:!self.mm_drawerController.showsShadow];
+//            [tableView reloadSections:[NSIndexSet indexSetWithIndex:indexPath.section] withRowAnimation:UITableViewRowAnimationNone];
+            
+            //設定情報にして
+            MMCenterViewController * center = [[MMCenterViewController alloc] init];
+            center.controllerStyle = ControllerStyleConfig;
+            UINavigationController * nav = [[MMNavigationController alloc] initWithRootViewController:center];
+            
+            NSLog(@"center = %@", center);
+            [self.mm_drawerController
+             setCenterViewController:nav
+             withCloseAnimation:YES
+             completion:nil];
+            
+            
             break;
         }
         case MMDrawerSectionOpenDrawerGestures:{
+            NSLog(@"selected MMDrawerSectionOpenDrawerGestures");
             switch (indexPath.row) {
                 case 0:
                     self.mm_drawerController.openDrawerGestureModeMask ^= MMOpenDrawerGestureModePanningNavigationBar;
@@ -409,6 +426,7 @@
             break;
         }
         case MMDrawerSectionCloseDrawerGestures:{
+            NSLog(@"selected MMDrawerSectionCloseDrawerGestures");
             switch (indexPath.row) {
                 case 0:
                     self.mm_drawerController.closeDrawerGestureModeMask ^= MMCloseDrawerGestureModePanningNavigationBar;
@@ -435,11 +453,13 @@
             break;
         }
         case MMDrawerSectionCenterHiddenInteraction:{
+            NSLog(@"selected MMDrawerSectionCenterHiddenInteraction");
             self.mm_drawerController.centerHiddenInteractionMode = indexPath.row;
             [tableView reloadSections:[NSIndexSet indexSetWithIndex:indexPath.section] withRowAnimation:UITableViewRowAnimationNone];
             break;
         }
         case MMDrawerSectionStretchDrawer:{
+            NSLog(@"selected MMDrawerSectionStretchDrawer");
             self.mm_drawerController.shouldStretchDrawer = !self.mm_drawerController.shouldStretchDrawer;
             [tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
             break;

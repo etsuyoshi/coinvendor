@@ -20,6 +20,7 @@
 
 #import "MMSuperViewController.h"
 
+
 @interface MMSuperViewController ()
 
 @end
@@ -38,12 +39,17 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
     if(OSVersionIsAtLeastiOS7()){
+        NSLog(@"execute defaultCenter");
         [[NSNotificationCenter defaultCenter]
          addObserver:self
          selector:@selector(contentSizeDidChangeNotification:)
          name:UIContentSizeCategoryDidChangeNotification
          object:nil];
+    }else{
+        NSLog(@"osのバージョンが７未満です");
+        [SVProgressHUD showErrorWithStatus:@"iOSバージョンを７以上にしてください"];
     }
 }
 
@@ -53,6 +59,7 @@
 }
 
 -(void)contentSizeDidChangeNotification:(NSNotification*)notification{
+    NSLog(@"%s", __func__);
     [self contentSizeDidChange:notification.userInfo[UIContentSizeCategoryNewValueKey]];
 }
 

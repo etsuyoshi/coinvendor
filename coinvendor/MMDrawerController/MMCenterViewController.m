@@ -63,18 +63,26 @@ typedef NS_ENUM(NSInteger, MMCenterViewControllerSection){
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.view.backgroundColor = [UIColor whiteColor];
+    NSLog(@"%s, type = %d", __func__, self.controllerStyle);
     
 //    _tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStyleGrouped];
 //    [self.tableView setDelegate:self];
 //    [self.tableView setDataSource:self];
 //    [self.view addSubview:self.tableView];
 //    [self.tableView setAutoresizingMask:UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight];
-    self.myWebView = [[UIWebView alloc] initWithFrame:self.view.bounds];
-    self.myWebView.delegate = self;
-    self.myWebView.backgroundColor = [UIColor blackColor];
-    [self.view addSubview:self.myWebView];
-    [self setUrl];
-    [self connectionStart];
+    
+    if(self.controllerStyle != ControllerStyleConfig){
+        self.myWebView = [[UIWebView alloc] initWithFrame:self.view.bounds];
+        self.myWebView.delegate = self;
+        self.myWebView.backgroundColor = [UIColor clearColor];
+        [self.view addSubview:self.myWebView];
+        [self setUrl];
+        [self connectionStart];
+    }
+    
+    //それぞれのcontrollerタイプに対して適切な部品を貼り付ける
+    [self setContents];
     
 //    UITapGestureRecognizer * doubleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(doubleTap:)];
 //    [doubleTap setNumberOfTapsRequired:2];
@@ -86,7 +94,7 @@ typedef NS_ENUM(NSInteger, MMCenterViewControllerSection){
     
 
     [self setupLeftMenuButton];
-    [self setupRightMenuButton];
+    //[self setupRightMenuButton];
     
     if(OSVersionIsAtLeastiOS7()){
         UIColor * barColor = [UIColor
@@ -140,8 +148,10 @@ typedef NS_ENUM(NSInteger, MMCenterViewControllerSection){
 }
 
 -(void)setupLeftMenuButton{
+    
     MMDrawerBarButtonItem * leftDrawerButton = [[MMDrawerBarButtonItem alloc] initWithTarget:self action:@selector(leftDrawerButtonPress:)];
     [self.navigationItem setLeftBarButtonItem:leftDrawerButton animated:YES];
+    
 }
 
 -(void)setupRightMenuButton{
@@ -153,8 +163,48 @@ typedef NS_ENUM(NSInteger, MMCenterViewControllerSection){
 -(void)contentSizeDidChange:(NSString *)size{
     //[self.tableView reloadData];
     NSLog(@"%s", __func__);
-    [self setUrl];
-    [self connectionStart];
+    
+    
+}
+
+-(void)setContents{
+    if(self.controllerStyle == ControllerStyleDaily ||
+       self.controllerStyle == ControllerStyleMinute){
+        NSLog(@"controller type = daily | minute");
+        
+        //すでにウェブビューがあればそのまま更新し、なければ貼り付けてから更新する
+        BOOL isWebviewExist = false;
+        for(UIView *view in self.view.subviews){
+            if([view isKindOfClass:[UIWebView class]]){
+                isWebviewExist = YES;
+                break;
+            }
+        }
+        
+        //なければウェブビューを初期化して貼り付ける
+        if(!isWebviewExist){
+            
+            self.myWebView = [[UIWebView alloc]initWithFrame:self.view.bounds];
+            self.myWebView.delegate = self;
+            [self.view addSubview:self.myWebView];
+            
+        }
+        
+        
+        //アクセスするurlを設定
+        [self setUrl];
+        //設定したurlにアクセスする
+        [self connectionStart];
+    }else if(self.controllerStyle == ControllerStyleConfig){
+        NSLog(@"controller type = config");
+        
+        //ウェブビューを消去
+        [self.myWebView removeFromSuperview];
+        
+        [self removeAllView];
+        [self setConfigView];
+        
+    }
 }
 
 -(void)setUrl{
@@ -434,13 +484,55 @@ shouldStartLoadWithRequest:(NSURLRequest *)request
 {
     NSLog(@"%s : %d", __func__, (int)navigationType);
     // リンクがクリックされたとき
-    if (navigationType == UIWebViewNavigationTypeLinkClicked ||//クリックされた時
-        navigationType == UIWebViewNavigationTypeOther) {//初回起動時
-        
+    if (navigationType == UIWebViewNavigationTypeLinkClicked){//クリックされた時
+        return NO;
+    }else if(navigationType == UIWebViewNavigationTypeOther) {//初回起動時
+        return YES;
     }
     
     return YES;
 }
 
+
+-(void)setConfigView{
+    NSLog(@"%s", __func__);
+    
+    int totalWidth = self.view.bounds.size.width;
+    int heightComponent = 40;
+    int margin = 15;
+    UILabel *labelTop = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, totalWidth/3, heightComponent)];
+    labelTop.text = @"上限";
+    labelTop.center = CGPointMake(totalWidth/3, totalWidth/3);
+    [self.view addSubview:labelTop];
+    
+    UILabel *labelBottom = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, totalWidth/3, heightComponent)];
+    labelBottom.text = @"下限";
+    labelBottom.center = CGPointMake(totalWidth/3, totalWidth/3 + heightComponent + margin);
+    [self.view addSubview:labelBottom];
+    
+    
+    UITextField *tfTop = [[UITextField alloc] initWithFrame:CGRectMake(0, 0, totalWidth/3, heightComponent)];
+    tfTop.borderStyle = UITextBorderStyleLine;
+    tfTop.delegate = self;
+    tfTop.keyboardType = UIKeyboardTypeNumberPad;
+    tfTop.center = CGPointMake(totalWidth/3 * 2, totalWidth/3);
+    [self.view addSubview:tfTop];
+    
+    
+    UITextField *tfBottom = [[UITextField alloc]initWithFrame:CGRectMake(0, 0, totalWidth/3, heightComponent)];
+    tfBottom.borderStyle = UITextBorderStyleLine;
+    tfBottom.delegate = self;
+    tfBottom.keyboardType = UIKeyboardTypeNumberPad;
+    tfBottom.center = CGPointMake(totalWidth/3 * 2, totalWidth/3 + heightComponent + margin);
+    [self.view addSubview:tfBottom];
+    
+}
+
+
+-(void)removeAllView{
+    for(UIView *subview in self.view.subviews){
+        [subview removeFromSuperview];
+    }
+}
 
 @end
