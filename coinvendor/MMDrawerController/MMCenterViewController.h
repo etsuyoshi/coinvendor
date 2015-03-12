@@ -32,7 +32,8 @@ typedef NS_ENUM(NSInteger, ControllerStyle) {
 
 @interface MMCenterViewController : MMSuperViewController
 //<UITableViewDataSource,UITableViewDelegate>
-<UIWebViewDelegate>
+<UIWebViewDelegate,
+UITextFieldDelegate>
 //@property (nonatomic,strong) UITableView * tableView;
 @property (nonatomic, strong) UIWebView *myWebView;
 @property (nonatomic) ControllerStyle controllerStyle;

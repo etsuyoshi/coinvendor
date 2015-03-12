@@ -22,6 +22,9 @@
 
 #import <QuartzCore/QuartzCore.h>
 
+#import <Fabric/Fabric.h>
+#import <Crashlytics/Crashlytics.h>
+
 #define MMDRAWER
 //#define SIDEMENU
 
@@ -47,6 +50,27 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    [Fabric with:@[CrashlyticsKit]];
+    
+    
+    //push-notification
+    // Override point for customization after application launch.
+    UIUserNotificationType types =
+    UIUserNotificationTypeBadge |
+    UIUserNotificationTypeSound |
+    UIUserNotificationTypeAlert;
+    
+    UIUserNotificationSettings *settings =
+    [UIUserNotificationSettings
+     settingsForTypes:types
+     categories:nil];
+    
+    [[UIApplication sharedApplication] registerForRemoteNotifications];
+    [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
+    
+    
+    
     
 #ifdef SIDEMENU
     //sideMenuで実行する場合
@@ -148,5 +172,27 @@
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
+
+- (void)application:(UIApplication *)app
+didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)devToken{
+    NSLog(@"deviceToken: %@", devToken);
+    
+    NSString *strToken = [NSString stringWithFormat:@"%@",devToken];
+    
+    // デバイストークンの両端の「<>」を取り除く
+    NSString *deviceTokenString = [[strToken description] stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"<>"]];
+    
+    // デバイストークン中の半角スペースを除去する
+    deviceTokenString = [deviceTokenString stringByReplacingOccurrencesOfString:@" " withString:@""];
+    
+    NSLog(@"deviceTokenString = %@",deviceTokenString);
+}
+
+- (void)application:(UIApplication *)app didFailToRegisterForRemoteNotificationsWithError:(NSError *) err
+{
+    NSLog(@"Errorinregistration.Error:%@", err);
+}
+
+
 
 @end

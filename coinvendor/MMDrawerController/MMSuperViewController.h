@@ -19,6 +19,7 @@
 // THE SOFTWARE.
 
 #import <UIKit/UIKit.h>
+#import <SVProgressHUD/SVProgressHUD.h>
 
 //webview-style(daily, minute)
 

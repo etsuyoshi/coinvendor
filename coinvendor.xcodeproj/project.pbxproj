@@ -19,6 +19,8 @@
 		2A5A483B1AB01729006554A5 /* MMSuperViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A5A48341AB01729006554A5 /* MMSuperViewController.m */; };
 		2A5A483C1AB01729006554A5 /* MMNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A5A48361AB01729006554A5 /* MMNavigationController.m */; };
 		2A5A48401AB017F1006554A5 /* MMExampleDrawerVisualStateManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A5A483F1AB017F1006554A5 /* MMExampleDrawerVisualStateManager.m */; };
+		2A76398D1AB031AA0097250D /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A76398B1AB031AA0097250D /* Crashlytics.framework */; };
+		2A76398E1AB031AA0097250D /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A76398C1AB031AA0097250D /* Fabric.framework */; };
 		2A938E181AAEF3C700810D9D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A938E171AAEF3C700810D9D /* main.m */; };
 		2A938E1B1AAEF3C700810D9D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A938E1A1AAEF3C700810D9D /* AppDelegate.m */; };
 		2A938E1E1AAEF3C700810D9D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A938E1D1AAEF3C700810D9D /* ViewController.m */; };
@@ -65,6 +67,8 @@
 		2A5A48361AB01729006554A5 /* MMNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMNavigationController.m; sourceTree = "<group>"; };
 		2A5A483E1AB017F1006554A5 /* MMExampleDrawerVisualStateManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMExampleDrawerVisualStateManager.h; sourceTree = "<group>"; };
 		2A5A483F1AB017F1006554A5 /* MMExampleDrawerVisualStateManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMExampleDrawerVisualStateManager.m; sourceTree = "<group>"; };
+		2A76398B1AB031AA0097250D /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
+		2A76398C1AB031AA0097250D /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		2A938E121AAEF3C700810D9D /* coinvendor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = coinvendor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2A938E161AAEF3C700810D9D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2A938E171AAEF3C700810D9D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -99,7 +103,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2A76398D1AB031AA0097250D /* Crashlytics.framework in Frameworks */,
 				99263A85E9FDB324DBD8EA04 /* libPods.a in Frameworks */,
+				2A76398E1AB031AA0097250D /* Fabric.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -271,6 +277,8 @@
 		FF5D917C0F02F4607B224957 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2A76398B1AB031AA0097250D /* Crashlytics.framework */,
+				2A76398C1AB031AA0097250D /* Fabric.framework */,
 				7A75D0EEAA070E84E421E489 /* libPods.a */,
 			);
 			name = Frameworks;
@@ -288,6 +296,7 @@
 				2A938E0F1AAEF3C700810D9D /* Frameworks */,
 				2A938E101AAEF3C700810D9D /* Resources */,
 				C083B34F276628AA4E026353 /* Copy Pods Resources */,
+				2A76398A1AB031930097250D /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -354,6 +363,19 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		2A76398A1AB031930097250D /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Fabric.framework/run fda572617282d21daffc4e05e76a13d1670c18bb 78aa50fb7ac5b691b7d0364f5c3e3584335ffbe71af39abdb13e9cf6f87b920d";
+		};
 		61527392B37BAC5C2A2439D7 /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -470,7 +492,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "d4fa5dd7-9436-45cb-8e15-0bcc2eb35776";
+				PROVISIONING_PROFILE = "70a049f7-7a4a-4217-8311-175c39bd9bbf";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -506,7 +528,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PROVISIONING_PROFILE = "2ce3bddb-093e-4a7f-ba8d-ca33ff7b0ce9";
+				PROVISIONING_PROFILE = "d99a339e-f047-4f24-9b12-281ef2ee6026";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -517,11 +539,16 @@
 			baseConfigurationReference = 4991332D7747CCEDEAF411AB /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_PREFIX_HEADER = "$(SRCROOT)/$(PRODUCT_NAME)/PrefixHeader.pch";
 				INFOPLIST_FILE = coinvendor/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "d4fa5dd7-9436-45cb-8e15-0bcc2eb35776";
+				PROVISIONING_PROFILE = "70a049f7-7a4a-4217-8311-175c39bd9bbf";
 			};
 			name = Debug;
 		};
@@ -530,11 +557,16 @@
 			baseConfigurationReference = EA81B918A9690B1971266FC5 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_PREFIX_HEADER = "$(SRCROOT)/$(PRODUCT_NAME)/PrefixHeader.pch";
 				INFOPLIST_FILE = coinvendor/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "2ce3bddb-093e-4a7f-ba8d-ca33ff7b0ce9";
+				PROVISIONING_PROFILE = "d99a339e-f047-4f24-9b12-281ef2ee6026";
 			};
 			name = Release;
 		};

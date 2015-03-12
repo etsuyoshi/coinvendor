@@ -81,13 +81,14 @@
         else{
             [cell setAccessoryType:UITableViewCellAccessoryNone];
         }
-        [cell.textLabel setText:[NSString stringWithFormat:@"Width %d",[self.drawerWidths[indexPath.row] intValue]]];
+        [cell.textLabel setText:[NSString stringWithFormat:@"乖離率 %d %%",[self.drawerWidths[indexPath.row] intValue]]];
     }
     return cell;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     if(indexPath.section == MMDrawerSectionDrawerWidth){
+        NSLog(@"did select drawerSectionDrawerWidth");
         [self.mm_drawerController
          setMaximumLeftDrawerWidth:[self.drawerWidths[indexPath.row] floatValue]
          animated:YES
@@ -96,7 +97,6 @@
              [tableView selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionNone];
              [tableView deselectRowAtIndexPath:indexPath animated:YES];
          }];
-
     }
     else {
         [super tableView:tableView didSelectRowAtIndexPath:indexPath];
